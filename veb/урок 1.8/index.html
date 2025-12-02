@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание ссылок</title>
+</head>
+<body>
+    <h1>Создание ссылок — Задание 1</h1>
+        <a href=https://www.youtube.com/watch?v target="_blank">Открыть Google в новой вкладке</a>
+    </p>
+    <p>
+        <a href="#bottom">Перейти в самый низ страницы</a>
+    </p>
+    <p>
+        <a href="#section2">Перейти к разделу 2</a>
+    </p>
+    <h2 id="section2">Раздел 2</h2>
+    <p>Это второй раздел страницы. Здесь находится текст для примера.</p>
+    <div style="height: 600px;"></div>
+    <h2 id="bottom">Нижняя часть страницы</h2>
+    <p>Вы дошли до конца документа!</p>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление изображений</title>
+</head>
+<body>
+
+    <h1>Задание: Добавление изображений</h1>
+
+    <!-- 1. Локальное изображение -->
+    <h2>Локальное изображение</h2>
+    <img src="images/photo.jpg" width="300" height="200" alt="Локальное изображение">
+    <!--
+        ВАЖНО: Файл photo.jpg должен находиться в папке "images" рядом с вашим HTML-файлом.
+    -->
+
+    <!-- 2. Изображение из интернета -->
+    <h2>Изображение из интернета</h2>
+    <img src=https://www.bing.com/images/search?view=detailV2&ccid=FUY62dGs&id=5DD1B5C5A11AA8BAC56F2D5F0CF1E4701B229B8D&thid=OIP.FUY62dGsq7VNpJRVPJ8ggQHaDZ&mediaurl=https%3a%2f%2fmuzobzor.net%2fwp-content%2fuploads%2f2023%2f10%2fdombra-00.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.15463ad9d1acabb54da494553c9f2081%3frik%3djZsiG3Dk8QxfLQ%26pid%3dImgRaw%26r%3d0&exph=400&expw=870&q=%d0%b4%d0%be%d0%bc%d0%b1%d1%80%d0%b0&FORM=IRPRST&ck=588E3B03585DB3AC3E10B7339EEB100C&selectedIndex=0&itb=0&idpp=overlayview&ajaxhist=0&ajaxserp=0
+         width="300" height="200" alt="Картинка из интернета">
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Полный документ: ссылки и изображения</title>
+</head>
+<body>
+
+    <h1>Полный HTML-документ</h1>
+
+    <!-- =========================
+         Раздел 1: Ссылки
+    ========================== -->
+
+    <!-- Внешняя ссылка, открывается в новой вкладке -->
+    <p>
+        <a href="https://www.google.com" target="_blank">
+            Открыть Google в новой вкладке
+        </a>
+    </p>
+
+    <!-- Якорная ссылка, переход к низу страницы -->
+    <p>
+        <a href="#bottom">Перейти в самый низ</a>
+    </p>
+
+    <!-- Якорная ссылка, переход к разделу 2 -->
+    <p>
+        <a href="#section2">Перейти к разделу 2</a>
+    </p>
+
+
+    <!-- =========================
+         Раздел 2: Изображения
+    ========================== -->
+
+    <h2>Изображения</h2>
+
+    <!-- Локальное изображение -->
+    <!-- Файл photo.jpg должен находиться в папке images рядом с HTML -->
+    <h3>Локальное изображение</h3>
+    <img src="images/photo.jpg" width="300" height="200" alt="Локальное изображение">
+
+    <!-- Изображение из интернета -->
+    <h3>Изображение из интернета</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/June_odd-eyed-cat.jpg/640px-June_odd-eyed-cat.jpg"
+         width="300" height="200" alt="Картинка из интернета">
+
+
+    <!-- Добавляем раздел для якорной ссылки -->
+    <h2 id="section2">Раздел 2</h2>
+    <p>Это второй раздел страницы.</p>
+
+    <!-- Пространство, чтобы был скролл вниз -->
+    <div style="height: 600px;"></div>
+
+    <!-- Нижняя часть страницы для якоря -->
+    <h2 id="bottom">Нижняя часть страницы</h2>
+    <p>Вы дошли до самого низа!</p>
+
+</body>
+</html>
