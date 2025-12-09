@@ -6,39 +6,46 @@
 </head>
 <body>
 
-    <!-- ЗАДАНИЕ 1: Создание простой формы -->
     <h2>Простая форма</h2>
 
     <form>
-        <!-- Поле ввода имени -->
-        <label for="name">Имя:</label>
-        <input type="text" id="name" name="name"><br><br>
 
-        <!-- Поле ввода email -->
-        <label for="email">Электронная почта:</label>
-        <input type="email" id="email" name="email"><br><br>
+        <label>
+            Имя:
+            <input type="text" name="name">
+        </label><br><br>
 
-        <!-- Поле ввода пароля -->
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password"><br><br>
+        <label>
+            Электронная почта:
+            <input type="email" name="email">
+        </label><br><br>
 
-        <!-- Текстовое поле -->
-<fieldset>
-    <legend>Меня зовут Мансур</legend>
-        <label for="comment">Комментарий:</label><br>
-        <textarea id="comment" name="comment" rows="4" cols="40"></textarea><br><br>
+        <label>
+            Пароль:
+            <input type="password" name="password">
+        </label><br><br>
 
-        <!-- ЗАДАНИЕ 2: Поля выбора и кнопки -->
-        <h3>Выбор страны</h3>
+        <fieldset>
+            <legend>Меня зовут Мансур</legend>
 
-        <label for="country">Страна:</label>
-        <select id="country" name="country">
-            <option value="russia">Россия</option>
-            <option value="usa">США</option>
-            <option value="canada">Канада</option>
-        </select><br><br>
-</fieldset>
-        <!-- Кнопки -->
+            <label>
+                Комментарий:<br>
+                <textarea name="comment" rows="4" cols="40"></textarea>
+            </label><br><br>
+
+            <h3>Выбор страны</h3>
+            <label>
+                Страна:
+                <select name="country">
+                    <option value="russia">Россия</option>
+                    <option value="usa">США</option>
+                    <option value="canada">Канада</option>
+                </select>
+            </label>
+        </fieldset>
+
+        <br>
+
         <button type="submit">Отправить</button>
         <button type="reset">Сбросить</button>
 
