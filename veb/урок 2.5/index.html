@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Работа с CSS</title>
+    <style>
+        /* ===== Задание 1: Текстовые свойства ===== */
+        h1 {
+            color: darkblue;          /* цвет текста */
+            text-align: center;       /* выравнивание по центру */
+        }
+
+        h2 {
+            color: green;
+        }
+
+        p.small-text {
+            font-size: 14px;          /* размер шрифта */
+        }
+
+        p.big-text {
+            font-size: 18px;
+            font-weight: bold;        /* жирный текст */
+        }
+
+        /* ===== Задание 2: Фон ===== */
+        .container {
+            background-color: lightgray;
+            background-image: url("https://via.placeholder.com/300");
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* ===== Задание 3: Отступы и рамки ===== */
+        .box {
+            padding: 15px;            /* внутренний отступ */
+            margin: 10px;             /* внешний отступ */
+            border: 2px solid black;  /* рамка */
+        }
+
+        /* ===== Задание 4: Размеры и overflow ===== */
+        .size-box {
+            width: 200px;
+            height: 100px;
+            border: 2px solid red;
+            overflow: scroll;         /* управление содержимым */
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Задание 1 -->
+    <h1>Главный заголовок</h1>
+    <h2>Подзаголовок</h2>
+
+    <p class="small-text">Это абзац с маленьким размером текста.</p>
+    <p class="big-text">Это жирный абзац с большим текстом.</p>
+
+    <!-- Задание 2 -->
+    <div class="container">
+        <p>Контейнер с фоновым цветом и изображением.</p>
+    </div>
+
+    <!-- Задание 3 -->
+    <div class="box">Блок 1</div>
+    <div class="box">Блок 2</div>
+    <div class="box">Блок 3</div>
+
+    <!-- Задание 4 -->
+    <div class="size-box">
+        Этот текст слишком длинный для блока, поэтому появляется прокрутка.
+        Этот текст слишком длинный для блока, поэтому появляется прокрутка.
+    </div>
+
+</body>
+</html>
