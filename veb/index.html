@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style>
+html { font-size: 16px; }
+
+.px { width: 200px; height: 50px; background: #ccc; }
+.rem { font-size: 1.5rem; }
+
+.parent { width: 200px; background: #eee; }
+.child { width: 50%; background: #aaa; }
+
+.em { font-size: 20px; }
+.em p { font-size: 1.2em; }
+
+.hex { background: #ffaaaa; }
+.rgb { background: rgb(150, 255, 150); }
+.rgba { background: rgba(0, 0, 255, 0.3); }
+
+div, p { margin: 10px; padding: 5px; }
+</style>
+</head>
+
+<body>
+
+<div class="px">px</div>
+<p class="rem">rem</p>
+
+<div class="parent">
+  <div class="child">%</div>
+</div>
+
+<div class="em">
+  <p>em</p>
+</div>
+
+<div class="hex">hex</div>
+<div class="rgb">rgb</div>
+<div class="rgba">rgba</div>
+
+</body>
+</html>
+
