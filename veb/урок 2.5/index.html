@@ -1,79 +1,95 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Работа с CSS</title>
-    <style>
-        /* ===== Задание 1: Текстовые свойства ===== */
-        h1 {
-            color: darkblue;          /* цвет текста */
-            text-align: center;       /* выравнивание по центру */
-        }
+    <!-- ===== Задание 1: Работа с текстовыми свойствами ===== -->
+    <h1>1. Главный заголовок (h1)</h1>
+    <h2>1. Подзаголовок (h2)</h2>
+    <p>1. Обычный абзац.</p>
+    <p class="bold">1. Жирный абзац.</p>
+    <p class="small">1. Маленький абзац.</p>
 
-        h2 {
-            color: green;
-        }
-
-        p.small-text {
-            font-size: 14px;          /* размер шрифта */
-        }
-
-        p.big-text {
-            font-size: 18px;
-            font-weight: bold;        /* жирный текст */
-        }
-
-        /* ===== Задание 2: Фон ===== */
-        .container {
-            background-color: lightgray;
-            background-image: url("https://via.placeholder.com/300");
-            background-repeat: no-repeat;
-            background-position: center;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        /* ===== Задание 3: Отступы и рамки ===== */
-        .box {
-            padding: 15px;            /* внутренний отступ */
-            margin: 10px;             /* внешний отступ */
-            border: 2px solid black;  /* рамка */
-        }
-
-        /* ===== Задание 4: Размеры и overflow ===== */
-        .size-box {
-            width: 200px;
-            height: 100px;
-            border: 2px solid red;
-            overflow: scroll;         /* управление содержимым */
-            padding: 10px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Задание 1 -->
-    <h1>Главный заголовок</h1>
-    <h2>Подзаголовок</h2>
-
-    <p class="small-text">Это абзац с маленьким размером текста.</p>
-    <p class="big-text">Это жирный абзац с большим текстом.</p>
-
-    <!-- Задание 2 -->
+    <!-- ===== Задание 2: Работа с фоновыми свойствами ===== -->
     <div class="container">
-        <p>Контейнер с фоновым цветом и изображением.</p>
+        2. Контейнер с фоновым цветом и изображением.
     </div>
 
-    <!-- Задание 3 -->
-    <div class="box">Блок 1</div>
-    <div class="box">Блок 2</div>
-    <div class="box">Блок 3</div>
+    <!-- ===== Задание 3: Работа с отступами и рамками ===== -->
+    <div class="box">3. Блок 1</div>
+    <div class="box">3. Блок 2</div>
+    <div class="box">3. Блок 3</div>
 
-    <!-- Задание 4 -->
+    <!-- ===== Задание 4: Работа с размерами и отображением ===== -->
     <div class="size-box">
-        Этот текст слишком длинный для блока, поэтому появляется прокрутка.
-        Этот текст слишком длинный для блока, поэтому появляется прокрутка.
+        4. Длинный текст, который может не помещаться в блок.
+    </div>
+    <div class="scroll-box">
+        4. Длинный текст с прокруткой внутри блока.
     </div>
 
 </body>
 </html>
+
+
+/* =========================
+   1. Работа с текстовыми свойствами
+========================= */
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+
+h2 {
+    color: darkgreen;
+}
+
+p.bold {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+p.small {
+    font-size: 12px;
+}
+
+/* =========================
+   2. Работа с фоновыми свойствами
+========================= */
+.container {
+    background-color: lightyellow;
+    background-image: url('https://via.placeholder.com/300x150');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   3. Работа с отступами и рамками
+========================= */
+.box {
+    width: 150px;
+    height: 80px;
+    background-color: lightblue;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid navy;
+    display: inline-block;
+}
+
+/* =========================
+   4. Работа с размерами и отображением
+========================= */
+.size-box {
+    width: 150px;
+    height: 80px;
+    background-color: lightcoral;
+    padding: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.scroll-box {
+    width: 150px;
+    height: 80px;
+    background-color: lightgreen;
+    padding: 5px;
+    overflow: auto;
+    margin: 10px 0;
+}
