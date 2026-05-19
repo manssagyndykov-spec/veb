@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUNDELIK PRO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-item.active {
+            background-color: #EFF6FF;
+            color: #2563EB;
+            font-weight: 600;
+        }
+
+        .map-bg {
+            background-image: url('https://api.mapbox.com/styles/v1/mapbox/light-v10/static/71.44,51.16,11,0/800x600?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTAwMHozN280ZGRkbXN6MzcifQ.os_m7L9j_D_NrS98858_SQ');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .user-marker.selected {
+            transform: scale(1.25);
+            background-color: #1E40AF;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Навигация -->
+    <nav class="fixed bottom-0 left-0 right-0 md:top-0 md:left-0 md:w-64 md:h-screen bg-white border-t md:border-t-0 md:border-r border-slate-200 z-50 px-4 md:py-8 flex md:flex-col justify-around items-center md:items-start">
+        <div class="hidden md:flex items-center gap-3 mb-10 px-2">
+            <div class="bg-blue-600 p-2 rounded-xl text-white">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1 class="text-xl font-black text-slate-800 tracking-tight">KUNDELIK<span class="text-blue-600">PRO</span></h1>
+        </div>
+
+        <div class="flex md:flex-col w-full gap-2">
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all w-full text-slate-500 hover:bg-slate-50 active">
+                <i class="fas fa-th-large w-5"></i>
+                <span class="hidden md:inline">Главная</span>
+            </button>
+            <button onclick="switchTab('leaderboard')" id="nav-leaderboard" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all w-full text-slate-500 hover:bg-slate-50">
+                <i class="fas fa-chart-bar w-5"></i>
+                <span class="hidden md:inline">Рейтинг</span>
+            </button>
+            <button onclick="switchTab('geo')" id="nav-geo" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all w-full text-slate-500 hover:bg-slate-50">
+                <i class="fas fa-map-marker-alt w-5"></i>
+                <span class="hidden md:inline">Где дети?</span>
+            </button>
+            <button class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl transition-all w-full text-slate-500 hover:bg-slate-50">
+                <i class="fas fa-user w-5"></i>
+                <span class="hidden md:inline">Профиль</span>
+            </button>
+        </div>
+
+        <div class="hidden md:mt-auto md:block w-full">
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-4 rounded-2xl text-white">
+                <p class="text-xs opacity-80 mb-1">Ваш план</p>
+                <p class="font-bold mb-3">Premium Family</p>
+                <button class="bg-white/20 hover:bg-white/30 text-white w-full py-2 rounded-lg text-xs transition-colors backdrop-blur-sm">Управлять</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="md:ml-64 p-4 md:p-8 pb-24 md:pb-8">
+        <header class="flex justify-between items-center mb-8">
+            <div class="relative w-full max-w-md hidden sm:block">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="text" placeholder="Поиск по предметам или ученикам..." class="bg-white border border-slate-200 rounded-xl py-2 pl-10 pr-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all">
+            </div>
+            <div class="flex items-center gap-4 ml-auto">
+                <button class="p-2 bg-white border border-slate-200 rounded-xl text-slate-500 hover:text-blue-600 transition-colors relative">
+                    <i class="fas fa-bell"></i>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                <div class="flex items-center gap-2 bg-white p-1 pr-3 border border-slate-200 rounded-xl">
+                    <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold">A</div>
+                    <span class="text-sm font-bold hidden sm:inline">Алихан С.</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab: Dashboard -->
+        <section id="dashboard" class="tab-content active">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Привет, Алихан! 👋</h2>
+                    <p class="text-slate-500">Сегодня вторник, 21 октября</p>
+                </div>
+                <div class="bg-blue-600 text-white p-4 rounded-xl shadow-lg shadow-blue-200">
+                    <i class="fas fa-calendar-alt fa-lg"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                    <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2">
+                        <i class="fas fa-book text-blue-500"></i> Текущие оценки
+                    </h3>
+                    <div class="space-y-4" id="scores-list">
+                        <!-- Оценки вставятся через JS -->
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                    <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2">
+                        <i class="fas fa-clock text-orange-500"></i> Расписание
+                    </h3>
+                    <div class="space-y-4" id="schedule-list">
+                        <!-- Расписание вставится через JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab: Leaderboard -->
+        <section id="leaderboard" class="tab-content">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-slate-800">Успеваемость класса</h2>
+                <p class="text-slate-500">Сравнение оценок 10 "А" класса</p>
+            </div>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-slate-400 text-sm uppercase">
+                            <th class="pb-4 font-medium">Место</th>
+                            <th className="pb-4 font-medium">Ученик</th>
+                            <th className="pb-4 font-medium">Ср. балл</th>
+                            <th className="pb-4 font-medium text-right">Тренд</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body" class="divide-y divide-slate-50">
+                        <!-- Рейтинг вставится через JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Tab: Geo -->
+        <section id="geo" class="tab-content">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-slate-800">Геолокация</h2>
+                <p class="text-slate-500">Где сейчас находятся одноклассники</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[600px]">
+                <div class="lg:col-span-1 space-y-3 overflow-y-auto pr-2" id="geo-list">
+                    <!-- Список учеников для карты -->
+                </div>
+                <div class="lg:col-span-2 relative bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 map-bg">
+                    <div id="map-markers-container"></div>
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-sm border border-white/50 text-xs">
+                        <p class="font-bold text-slate-700">Астана, Казахстан</p>
+                        <p class="text-slate-500" id="active-users-count">Активных пользователей: 5</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // --- Данные ---
+        const STUDENTS_DATA = [
+            { id: 1, name: "Алихан С.", average: 4.8, lastSeen: "Школа", status: "online" },
+            { id: 2, name: "Мария И.", average: 4.5, lastSeen: "Дом", status: "online" },
+            { id: 3, name: "Нурислам К.", average: 3.9, lastSeen: "Спортзал", status: "away" },
+            { id: 4, name: "Айлин М.", average: 4.9, lastSeen: "Библиотека", status: "online" },
+            { id: 5, name: "Дмитрий В.", average: 4.2, lastSeen: "В пути", status: "away" },
+        ];
+
+        const SCHEDULE = [
+            { time: "08:00", subject: "Математика", room: "302 каб." },
+            { time: "09:00", subject: "Физика", room: "Лаборатория" },
+            { time: "10:00", subject: "История Казахстана", room: "201 каб." },
+            { time: "11:00", subject: "Английский язык", room: "405 каб." },
+        ];
+
+        const SUBJECTS = ["Алгебра", "Геометрия", "Информатика", "Физика"];
+
+        // --- Инициализация ---
+        window.onload = () => {
+            renderDashboard();
+            renderLeaderboard();
+            renderGeo();
+        };
+
+        // --- Навигация ---
+        function switchTab(tabId) {
+            // Скрыть все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            // Показать выбранную
+            document.getElementById(tabId).classList.add('active');
+            
+            // Обновить стили кнопок навигации
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('nav-' + tabId).classList.add('active');
+        }
+
+        // --- Рендеринг Дашборда ---
+        function renderDashboard() {
+            const scoresList = document.getElementById('scores-list');
+            scoresList.innerHTML = SUBJECTS.map(subj => `
+                <div class="flex justify-between items-center p-3 hover:bg-slate-50 rounded-xl transition-colors border border-transparent hover:border-slate-100">
+                    <span class="text-slate-600 font-medium">${subj}</span>
+                    <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full font-bold">5</span>
+                </div>
+            `).join('');
+
+            const scheduleList = document.getElementById('schedule-list');
+            scheduleList.innerHTML = SCHEDULE.map(item => `
+                <div class="flex items-center gap-4 border-l-4 border-blue-500 pl-4 py-1">
+                    <span class="text-sm font-bold text-slate-400 w-12">${item.time}</span>
+                    <div>
+                        <p class="font-bold text-slate-700">${item.subject}</p>
+                        <p class="text-xs text-slate-400">${item.room}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- Рендеринг Рейтинга ---
+        function renderLeaderboard() {
+            const sorted = [...STUDENTS_DATA].sort((a, b) => b.average - a.average);
+            const tbody = document.getElementById('leaderboard-body');
+            
+            tbody.innerHTML = sorted.map((student, index) => {
+                let badgeClass = 'text-slate-400';
+                if(index === 0) badgeClass = 'bg-yellow-100 text-yellow-700';
+                if(index === 1) badgeClass = 'bg-slate-100 text-slate-600';
+                if(index === 2) badgeClass = 'bg-orange-100 text-orange-700';
+
+                return `
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="py-4">
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold ${badgeClass}">
+                                ${index + 1}
+                            </span>
+                        </td>
+                        <td class="py-4 font-semibold text-slate-700">${student.name}</td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-24 bg-slate-100 h-2 rounded-full overflow-hidden hidden sm:block">
+                                    <div class="bg-blue-500 h-full" style="width: ${(student.average/5)*100}%"></div>
+                                </div>
+                                <span class="font-black text-blue-600">${student.average}</span>
+                            </div>
+                        </td>
+                        <td class="py-4 text-right text-green-500 font-bold text-sm">+0.1</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // --- Рендеринг Геолокации ---
+        let selectedId = null;
+
+        function renderGeo() {
+            const geoList = document.getElementById('geo-list');
+            const markersContainer = document.getElementById('map-markers-container');
+            
+            geoList.innerHTML = STUDENTS_DATA.map(student => `
+                <div onclick="selectUser(${student.id})" id="user-card-${student.id}" class="user-card bg-white p-4 rounded-xl cursor-pointer transition-all border border-slate-100 hover:shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                            ${student.name[0]}
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-700 text-sm">${student.name}</h4>
+                            <p class="text-xs text-slate-400"><i class="fas fa-map-pin mr-1"></i> ${student.lastSeen}</p>
+                        </div>
+                        <div class="w-2 h-2 rounded-full ${student.status === 'online' ? 'bg-green-500' : 'bg-orange-400'}"></div>
+                    </div>
+                </div>
+            `).join('');
+
+            markersContainer.innerHTML = STUDENTS_DATA.map((student, i) => `
+                <div 
+                    onclick="selectUser(${student.id})"
+                    id="marker-${student.id}"
+                    class="user-marker absolute transition-all duration-500 cursor-pointer group"
+                    style="left: ${25 + (i * 12)}%; top: ${20 + (i * 15)}%"
+                >
+                    <div class="relative flex items-center justify-center w-10 h-10 rounded-full border-2 border-white shadow-xl bg-blue-500 text-white font-bold text-[10px]">
+                        ${student.name.split(' ')[0]}
+                        <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rotate-45"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectUser(id) {
+            selectedId = id;
+            
+            // Сброс стилей карточек
+            document.querySelectorAll('.user-card').forEach(c => {
+                c.classList.remove('bg-blue-50', 'border-blue-200', 'shadow-md');
+            });
+            document.getElementById('user-card-' + id).classList.add('bg-blue-50', 'border-blue-200', 'shadow-md');
+
+            // Сброс маркеров
+            document.querySelectorAll('.user-marker').forEach(m => {
+                m.querySelector('div').classList.remove('bg-blue-800', 'scale-125');
+                m.querySelector('div').classList.add('bg-blue-500');
+            });
+            const activeMarker = document.getElementById('marker-' + id).querySelector('div');
+            activeMarker.classList.add('bg-blue-800', 'scale-125');
+        }
+    </script>
+</body>
+</html>

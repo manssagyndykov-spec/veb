@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox задания</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+
+    h2 { margin-top: 30px; }
+
+    div { margin: 5px; padding: 10px; }
+
+    /* 1 */
+    .block { display: block; background: lightblue; }
+    .inline { display: inline; background: lightgreen; }
+    .flex { display: flex; background: lightcoral; }
+
+    /* 2 */
+    .z2 { display: flex; gap: 10px; }
+
+    /* 3 */
+    .z3 {
+      display: flex;
+      flex-flow: column wrap;
+      height: 120px;
+      gap: 10px;
+    }
+
+    /* 4 */
+    .z4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      background: #eee;
+    }
+
+    /* 5 */
+    .z5 { display: flex; }
+    .z5 div:nth-child(1) { flex: 1 1 100px; background: lightblue; }
+    .z5 div:nth-child(2) { flex: 2 1 150px; background: lightgreen; }
+    .z5 div:nth-child(3) { flex: 0 0 100px; background: lightcoral; }
+
+    /* 6 */
+    .z6 { display: flex; }
+    .z6 div:nth-child(1) { width: 50%; background: lightblue; }
+    .z6 div:nth-child(2) { flex: 1; background: lightgreen; }
+    .z6 div:nth-child(3) { width: 100px; background: lightcoral; }
+
+    /* 7 */
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #ddd;
+      padding: 10px;
+    }
+
+    /* 8 */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .gallery div {
+      flex: 1 1 200px;
+      background: lightgray;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Flexbox задания</h1>
+
+<h2>1. display</h2>
+<div class="block">Block</div>
+<div class="inline">Inline</div>
+<div class="flex">Flex</div>
+
+<h2>2. Flex-контейнер</h2>
+<div class="z2">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+
+<h2>3. flex-direction / flex-wrap / flex-flow</h2>
+<div class="z3">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+</div>
+
+<h2>4. Выравнивание</h2>
+<div class="z4">
+  <div>Центр</div>
+</div>
+
+<h2>5. flex</h2>
+<div class="z5">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+
+<h2>6. Практика</h2>
+<div class="z6">
+  <div>50%</div>
+  <div>auto</div>
+  <div>100px</div>
+</div>
+
+<h2>7. Меню</h2>
+<nav class="menu">
+  <a href="#">Главная</a>
+  <a href="#">О нас</a>
+  <a href="#">Контакты</a>
+</nav>
+
+<h2>8. Галерея</h2>
+<div class="gallery">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+</div>
+
+</body>
+</html>Ы
